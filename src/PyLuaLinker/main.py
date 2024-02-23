@@ -13,7 +13,8 @@ def load_JSON_from_path(path: Path) -> dict:
     try:
         file = open(path, "r")
         dict = json.load(file)
-        pprint("> " + str(dict) + "\n")
+        pprint("> " + str(dict))
+        print()
         return dict
 
     except FileNotFoundError:
@@ -37,12 +38,11 @@ def get_sources_in_path(path: Path) -> dict[str]:
 
 
 def collect_sources(dirs: list[str]):
+    print("collecting sources:\n")
     src_files = {}
     for dir in dirs:
         src_files |= get_sources_in_path(Path(dir))
     # todo remove dupes / collision detection
-    pprint(src_files)
-    print()
 
     return src_files
 
@@ -64,7 +64,6 @@ def main():
 
     src_files = collect_sources(src_dirs)
     deps = dt.tree("main", src_files)
-    deps.grow()
     linker.link(trg_dir, deps)
 
 

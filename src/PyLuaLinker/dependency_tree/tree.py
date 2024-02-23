@@ -3,6 +3,7 @@ from .node import node
 
 class tree:
     def __init__(self, entry: str, src: dict[str, Path]) -> None:
+        print("initializing tree for " + entry + ":\n")
 
         if not entry in src:
             print("entry  point not found!")
@@ -12,7 +13,11 @@ class tree:
         self.src = src
         self.root = None
 
+        self.grow()
+        print("tree for " + entry + " was initialized\n")
+
     def grow(self):
+        print("build tree for" + self.entry)
         self.root = node(self.entry, self)
         self.root.grow()
 

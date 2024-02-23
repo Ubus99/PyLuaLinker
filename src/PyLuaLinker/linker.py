@@ -1,10 +1,10 @@
 import dependency_tree.tree as dt
 from pathlib import Path
-import dependency_tree.utils as utils
+from dependency_tree import utils
 
 
 def link(dir_out: Path, tree: dt.tree):
-    print("linking files @" + str(dir_out))
+    print("linking files @ " + str(dir_out) + "\n")
 
     while True:
         leaves = tree.get_leaves()
@@ -39,7 +39,7 @@ def link_file(dir_out: Path, dependency: dt.node):
         else:
             file_out.write(l)
 
-    print("finished linking " + filename)
+    print("finished linking " + filename + "\n")
 
 
 def clean_up(dir_out: Path, filename: str):
