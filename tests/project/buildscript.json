@@ -1,0 +1,7 @@
+{
+    "app_name": "test",
+    "entry_point": "main",
+    "src_dir": [
+        "./src"
+    ]
+}
