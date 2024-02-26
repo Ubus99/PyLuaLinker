@@ -38,6 +38,13 @@ The result should look like this:
 
 for an example look at [the example implementation](https://github.com/Ubus99/PyLuaLinker/tree/30b7094eda02b48246ca1661aca9f709e919d81f/tests/project)
 
+### marking import statements
+
+To mark a `require()` statement for static linking, comment `--> static` in the same line.   
+Other types of import statement are currently not supported.   
+
+This allows for hybrid static / dynamic importing and for your source program to be either run conventionally or linked without modification.
+
 ### building a project:
 
 To link your project enter
