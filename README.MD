@@ -27,7 +27,7 @@ The result should look like this:
 {  
      "app_name": "",   
      "entry_point": "",  
-     "src_dir": []  
+     "src_dir": [""]  
 }  
 ```
 |        key          |                description:                  |
@@ -42,7 +42,7 @@ for an example look at [the example implementation](https://github.com/Ubus99/Py
 
 To link your project enter
 
-> main.py build [buildscript.json]
+`main.py build [buildscript.json]`
 
 ## Contributing;
 
