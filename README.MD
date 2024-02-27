@@ -2,7 +2,7 @@
 
 A python utility for linking LUA source files into one LUA file.
 
-> currently no builds available, to use download and initialize using pipenv
+> currently no builds available, to use download and run build.ps1 (currently no cross-platform support)
 
 ## How-To:
 
@@ -10,7 +10,7 @@ A python utility for linking LUA source files into one LUA file.
 
 Run:
 
-`main.py new [path]`
+`PyLuaLinker new [path]`
 
 to initialize a new project at [path].  
 The result should look like this:
@@ -49,7 +49,7 @@ This allows for hybrid static / dynamic importing and for your source program to
 
 To link your project enter
 
-`main.py build [buildscript.json]`
+`PyLuaLinker build [buildscript.json]`
 
 ## Contributing;
 
