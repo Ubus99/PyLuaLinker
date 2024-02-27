@@ -7,7 +7,7 @@ packages = ["src/PyLuaLinker/", "src/data/"]
 
 [project]
 name = "PyLuaLinker"
-version = "0.0.4"
+version = "0.1.0"
 authors = [{ name = "Ubus99" }]
 description = "A command-line tool for linking Lua projects into a single file"
 readme = "README.md"
