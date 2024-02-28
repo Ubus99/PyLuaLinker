@@ -2,7 +2,7 @@
 
 A python utility for linking LUA source files into one LUA file.
 
-> currently no builds available, to use download and run build.ps1 (currently no cross-platform support)
+To install run `pip install PyLuaLinker`
 
 ## How-To:
 
@@ -36,7 +36,7 @@ The result should look like this:
 |```"entry_point":``` | is the name of your main source file         |
 |```"src_dir":```     | is a list of paths (absolute or relative) to all required LUA source files|
 
-for an example look at [the example implementation](https://github.com/Ubus99/PyLuaLinker/tree/30b7094eda02b48246ca1661aca9f709e919d81f/tests/project)
+for an example look at [the linker test project](https://github.com/Ubus99/PyLuaLinker/tree/30b7094eda02b48246ca1661aca9f709e919d81f/tests/project)
 
 ### marking import statements
 
