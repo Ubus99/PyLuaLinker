@@ -27,11 +27,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Print Directory
-      run: tree -d ./
-
     - name: Install dependencies
       run: |
+        tree -d ./
         python -m pip install --upgrade pip
         pip install build
 
