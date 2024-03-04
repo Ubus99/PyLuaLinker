@@ -3,3 +3,4 @@
 **/build/*
 dist/*
 tests/init_test/*
+/.idea/*

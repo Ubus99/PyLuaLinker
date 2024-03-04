@@ -1,12 +1,12 @@
+import logging
 from pathlib import Path
 
-import logging
 from . import utils
-from .build_data import build_data
+from .builddata import BuildData
 from .dependency_tree import tree as dt
 
 
-def link_project(data: build_data, tree: dt.tree):
+def link_project(data: BuildData, tree: dt.Tree):
     logging.info("linking files @ " + str(data.build_dir))
 
     while True:
@@ -20,7 +20,7 @@ def link_project(data: build_data, tree: dt.tree):
     clean_up(data)
 
 
-def link_file(dir_out: Path, dependency: dt.node):
+def link_file(dir_out: Path, dependency: dt.Node):
     # get paths
     filename = dependency.name
     cache_path = dir_out / ".cache"
@@ -47,7 +47,7 @@ def link_file(dir_out: Path, dependency: dt.node):
     logging.info("< finished linking " + filename)
 
 
-def clean_up(data: build_data):
+def clean_up(data: BuildData):
     inp_path = data.cache_dir / (data.entry_point + ".temp")
     out_path = data.build_dir / (data.app_name + ".lua")
 

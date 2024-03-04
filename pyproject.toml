@@ -20,7 +20,7 @@ classifiers = [
 keywords = ["LUA", "linker", "scrips"]
 
 [project.scripts]
-PyLuaLinker = "PyLuaLinker.__main__:main"
+PyLuaLinker = "PyLuaLinker.commands.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/Ubus99/PyLuaLinker"

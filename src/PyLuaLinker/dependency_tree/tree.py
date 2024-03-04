@@ -1,27 +1,33 @@
 import logging
 
-from .node import node
-from ..build_data import build_data
+from .node import Node
+from ..builddata import BuildData
 
 
-class tree:
-    def __init__(self, data: build_data) -> None:
-        logging.info("creating dependency-tree for " +
-                     data.entry_point + ":")
+class Tree:
+    def __init__(self, data: BuildData) -> None:
+        self.root = None
+
+        logging.info(
+            "creating dependency-tree for " +
+            data.entry_point + ":"
+        )
 
         self.data = data
 
         self.grow()
-        logging.info("dependency-tree for " +
-                     data.entry_point + " is complete")
+        logging.info(
+            "dependency-tree for " +
+            data.entry_point + " is complete"
+        )
 
     def grow(self):
         logging.info("> growing tree for " + self.data.entry_point)
-        self.root = node(self.data.entry_point, self)
+        self.root = Node(self.data.entry_point, self)
         self.root.grow()
 
-    def get_leaves(self) -> list[node]:
-        if self.root == None:
+    def get_leaves(self) -> list[Node]:
+        if self.root is None:
             return []
 
         leaves = self.root.get_leaves()
@@ -29,7 +35,7 @@ class tree:
 
         return leaves
 
-    def cull(self, node: node):
+    def cull(self, node: Node):
         if node == self.root:
             self.root = None
             return

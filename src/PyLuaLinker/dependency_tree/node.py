@@ -1,8 +1,9 @@
 import logging
+
 from .. import utils
 
 
-class node:
+class Node:
     def __init__(self, name: str, base) -> None:
         self.name = name
         self.path = base.data.src[name]
@@ -15,13 +16,15 @@ class node:
         if __value is None:
             return False
 
-        eq = self.name == __value.name\
-            and self.path == __value.path
+        eq = self.name == __value.name \
+             and self.path == __value.path
         return eq
 
     def __hash__(self) -> int:
-        return hash(("name", self.name,
-                     "path", self.path))
+        return hash(
+            ("name", self.name,
+             "path", self.path)
+            )
 
     def grow(self):
         logging.info("growing " + self.name)
@@ -30,7 +33,7 @@ class node:
 
         for ln in deps:
             name = deps[ln]
-            child = node(name, self.base)
+            child = Node(name, self.base)
             child.grow()
             buff.append(child)
 

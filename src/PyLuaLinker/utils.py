@@ -1,8 +1,8 @@
-from pathlib import Path
-import re
-from pprint import pformat
 import json
 import logging
+import re
+from pathlib import Path
+from pprint import pformat
 
 
 def is_import(line: str) -> bool:

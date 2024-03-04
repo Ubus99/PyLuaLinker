@@ -1,14 +1,14 @@
+import logging
 import os
 import sys
-import logging
-from .. import utils
-from .. import linker
-from ..build_data import build_data
-from ..dependency_tree.tree import tree
+
+from PyLuaLinker import linker
+from PyLuaLinker import utils
+from PyLuaLinker.builddata import BuildData
+from PyLuaLinker.dependency_tree.tree import Tree
 
 
 def build(args):
-
     logging.info("Starting LUA linker...")
 
     execution_path = sys.argv[0]
@@ -18,10 +18,10 @@ def build(args):
 
     buildscript = utils.json_from_path(buildscript_path)
 
-    data = build_data(
+    data = BuildData(
         buildscript,
         buildscript_path.parent
     )
 
-    dt = tree(data)
+    dt = Tree(data)
     linker.link_project(data, dt)

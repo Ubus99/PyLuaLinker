@@ -1,14 +1,14 @@
 from pathlib import Path
+
 from . import utils
 
 
-class build_data:
+class BuildData:
     def __init__(self,
                  buildscript: dict,
                  build_dir: Path
                  ) -> None:
-
-        self.src = utils.collect_sources(buildscript["src_dir"],)
+        self.src = utils.collect_sources(buildscript["src_dir"])
 
         if not buildscript["entry_point"] in self.src:
             print("entry  point not found!")
