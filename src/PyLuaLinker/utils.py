@@ -16,9 +16,9 @@ def is_import(line: str) -> bool:
     """
 
     txt = line.strip()
-    restr = '.*require\(\".+\"\) --> static'  # only supports duble quotes
+    restr = r'.*require\(\".+\"\) --> static'  # only supports duble quotes
     match = re.search(restr, txt)
-    return match != None
+    return match is not None
 
 
 def scan_file(path: Path) -> dict[int, str]:
@@ -33,16 +33,17 @@ def scan_file(path: Path) -> dict[int, str]:
 
     logging.info("scanning " + path.name + ":")
 
-    file = path.open()
-    deps = {}
+    with path.open() as file:
 
-    for idx, l in enumerate(file):
-        logging.debug(str(idx) + " > " + l.strip())
-        if is_import(l):
-            _, deps[idx] = extract_import(l)
+        deps = {}
 
-    logging.info("scanning " + path.name + " completed")
-    return deps
+        for idx, l in enumerate(file):
+            logging.debug(str(idx) + " > " + l.strip())
+            if is_import(l):
+                _, deps[idx] = extract_import(l)
+
+        logging.info("scanning " + path.name + " completed")
+        return deps
 
 
 def extract_import(line: str) -> tuple[list[str], str]:
@@ -59,7 +60,7 @@ def extract_import(line: str) -> tuple[list[str], str]:
     txt = line.strip()
     tokens = txt.split(" ")
 
-    r = re.compile("require\(\".+\"\)")
+    r = re.compile(r"require\(\".+\"\)")
     require = list(filter(r.match, tokens))[0]
     name = require.split('"')[1]
 
@@ -74,7 +75,9 @@ def insert_requirement(l: str, cache_path: Path) -> str:
     path = cache_path / (name + ".temp")
 
     try:
-        out = path.open().read() + "\n\n"
+        out_file = path.open()
+        out = out_file.read() + "\n\n"
+        out_file.close()
     except FileNotFoundError:
         logging.error("<<< cached dependency '" + name + ".temp' not found!")
         out = "--<include file not found>\n"
