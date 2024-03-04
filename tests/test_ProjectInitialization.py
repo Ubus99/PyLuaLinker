@@ -1,11 +1,9 @@
 import argparse
 import shutil
-import sys
 import unittest
 from pathlib import Path
 
-sys.path.append('../src')
-import PyLuaLinker.commands.new as new
+from src.PyLuaLinker.commands import new
 
 
 class TestProjectInitialization(unittest.TestCase):
