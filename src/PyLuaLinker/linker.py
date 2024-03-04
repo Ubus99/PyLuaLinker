@@ -51,6 +51,6 @@ def clean_up(data: BuildData):
     inp_path = data.cache_dir / (data.entry_point + ".temp")
     out_path = data.build_dir / (data.app_name + ".lua")
 
-    out_file = out_path.open("+w")
-    out_file.write(inp_path.open().read())
-    out_file.close()
+    with out_path.open("+w") as out_file, inp_path.open() as inp_file:
+        out_file.write(inp_file.read())
+        out_file.close()
