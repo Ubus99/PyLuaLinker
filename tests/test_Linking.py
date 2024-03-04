@@ -1,7 +1,9 @@
 import argparse
+import sys
 import unittest
 from pathlib import Path
 
+sys.path.append('../src')
 import PyLuaLinker.commands.build as build
 
 
