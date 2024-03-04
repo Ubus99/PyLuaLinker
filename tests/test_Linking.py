@@ -5,7 +5,7 @@ from pathlib import Path
 import PyLuaLinker.commands.build as build
 
 
-class LinkingTest(unittest.TestCase):
+class TestLinking(unittest.TestCase):
 
     def setUp(self):
         self.target_path = Path("./project/buildscript.json")
