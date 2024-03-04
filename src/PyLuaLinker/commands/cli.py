@@ -39,7 +39,7 @@ def init_parser():
         default=Path("./"),
         help="initialize a new PyLuaLinker project at path, defaults to current direpipctory"
     )
-    parser_new.set_defaults(func=new.init)
+    parser_new.set_defaults(func=new.new_project)
 
     return parser
 

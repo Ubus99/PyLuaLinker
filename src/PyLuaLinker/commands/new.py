@@ -1,8 +1,10 @@
+import argparse
 import logging
-from pathlib import Path
 import shutil
+from pathlib import Path
 
-def init(args):
+
+def new_project(args: argparse.Namespace):
     src_path = (Path(__file__) / "../../../data/buildscript.json").resolve()
     dst_dir = args.path.resolve()
     dst_src_dir = dst_dir / "src"
